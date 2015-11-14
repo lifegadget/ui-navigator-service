@@ -1,3 +1,27 @@
-<h2 id="title">Welcome to Ember</h2>
+{{#app-page repo='ui-navigator-service' subHeading='A simple service to inject meta-info about the current route into your controllers and components'}}
+
+<h3>Choose a route:</h3>
+<ul>
+  <li>{{#link-to 'application'}}[root app]{{/link-to}}</li>
+  <li>{{#link-to 'foo'}}foo{{/link-to}}</li>
+  <li>{{#link-to 'foo.bar'}}foo.bar{{/link-to}}</li>
+  <li>{{#link-to 'foo.bar.baz'}}foo.bar.baz{{/link-to}}</li>
+  <li>{{#link-to 'foo.new'}}foo.new{{/link-to}}</li>
+</ul>
+
+<h3>Navigator says:</h3>
+<ul>
+  <li>currentPath: <prop>{{navigator.currentPath}}</prop></li>
+  <li>currentRouteName: <prop>{{navigator.currentRouteName}}</prop></li>
+</ul>
+
+<ul>
+  <li><li>currentNode: <prop>{{navigator.currentNode}}</prop></li></li>
+  <li><li>isIndexRoute: <prop>{{navigator.isIndexRoute}}</prop></li></li>
+  <li><li>primaryRoute: <prop>{{navigator.primaryRoute}}</prop></li></li>
+  <li><li>secondaryRoute: <prop>{{navigator.secondaryRoute}}</prop></li></li>
+</ul>
 
 {{outlet}}
+
+{{/app-page}}
