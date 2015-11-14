@@ -1,6 +1,6 @@
 {
   "name": "ui-navigator-service",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A simple service to inject meta-info about the current route into your controllers and components.",
   "directories": {
     "doc": "doc",
@@ -45,6 +45,7 @@
     "ember-cli-babel": "^5.1.5"
   },
   "ember-addon": {
-    "configPath": "tests/dummy/config"
+    "configPath": "tests/dummy/config",
+    "demoURL": "https://ui-navigator-service.firebaseapp.com"
   }
 }

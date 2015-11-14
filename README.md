@@ -1,26 +1,4 @@
-# Ui-navigator-service
+# ui-navigator-service
+> a simple service to inject meta-info about the current route into your controllers and components
 
-This README outlines the details of collaborating on this Ember addon.
-
-## Installation
-
-* `git clone` this repository
-* `npm install`
-* `bower install`
-
-## Running
-
-* `ember server`
-* Visit your app at http://localhost:4200.
-
-## Running Tests
-
-* `npm test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
-
-## Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+Check out the demo app to see it in action: <a href="https://ui-navigator-service.firebaseapp.com">demo app</a>
