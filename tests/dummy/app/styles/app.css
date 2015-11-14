@@ -1,0 +1,10 @@
+.answer {
+  font-weight: 900;
+  margin-left: 1em;
+}
+
+.answer.boolean {
+  font-style: italic;
+  font-weight: 500;
+  color: blue;
+}

@@ -15,15 +15,23 @@
 
 <h3>Navigator says:</h3>
 <ul>
-  <li>currentPath: <prop>{{navigator.currentPath}}</prop></li>
-  <li>currentRouteName: <prop>{{navigator.currentRouteName}}</prop></li>
+  <li>currentPath: <span class="answer">{{navigator.currentPath}}</span></li>
+  <li>currentRouteName: <span class="answer">{{navigator.currentRouteName}}</span></li>
 </ul>
 
 <ul>
-  <li><li>currentNode: <prop>{{navigator.currentNode}}</prop></li></li>
-  <li><li>isIndexRoute: <prop>{{navigator.isIndexRoute}}</prop></li></li>
-  <li><li>primaryRoute: <prop>{{navigator.primaryRoute}}</prop></li></li>
-  <li><li>secondaryRoute: <prop>{{navigator.secondaryRoute}}</prop></li></li>
+  <li>
+    currentNode: <span class='answer'>{{navigator.currentNode}}</span>
+  </li>
+  <li>
+    isIndexRoute: <span class='answer boolean'>{{navigator.isIndexRoute}}</span>
+  </li>
+  <li>
+    primaryRoute: <span class='answer'>{{navigator.primaryRoute}}</span>
+  </li>
+  <li>
+    secondaryRoute: <span class='answer'>{{navigator.secondaryRoute}}</span>
+  </li>
 </ul>
 
 {{outlet}}
