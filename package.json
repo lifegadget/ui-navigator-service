@@ -1,6 +1,6 @@
 {
   "name": "ui-navigator-service",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A simple service to inject meta-info about the current route into your controllers and components.",
   "directories": {
     "doc": "doc",
@@ -11,7 +11,7 @@
     "start": "ember server",
     "test": "ember try:testall"
   },
-  "repository": "",
+  "repository": "https://github.com/lifegadget/ui-navigator-service",
   "engines": {
     "node": ">= 0.10.0"
   },
