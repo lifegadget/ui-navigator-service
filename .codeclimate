@@ -7,6 +7,9 @@ engines:
     enabled: false
   eslint:
     enabled: true
+    exclude_fingerprints:
+    - 568f0c1bc5346799e6bb265778b0cde7
+    - c70e23149f6eaa34212aa6051a6d14e4
   csslint:
     enabled: true
 ratings:
