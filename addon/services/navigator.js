@@ -1,12 +1,13 @@
 import Ember from 'ember';
-const { keys, create } = Object; // jshint ignore:line
-const { computed, observer, $, run, on, typeOf, debug, isPresent } = Ember;  // jshint ignore:line
-const { defineProperty, get, set, inject, isEmpty, merge } = Ember; // jshint ignore:line
+import getOwner from 'ember-getowner-polyfill';
+const { computed, observer, $, run, on, typeOf } = Ember;  // jshint ignore:line
+const { get, set } = Ember; // jshint ignore:line
 const a = Ember.A; // jshint ignore:line
 
 export default Ember.Service.extend({
-  init() {
-    this.set('applicationController', this.container.lookup('controller:application'));
+  init(...args) {
+    this._super(args);
+    this.set('applicationController', getOwner(this).lookup('controller:application'));
   },
   currentPath: computed.alias('applicationController.currentPath'),
   currentRouteName: computed.alias('applicationController.currentRouteName'),
@@ -25,6 +26,6 @@ export default Ember.Service.extend({
   secondaryRoute: computed('currentPath', function() {
     const currentPath = this.get('currentPath').split('.');
     const length = currentPath.length;
-    return currentPath[1] !== 'index' && length > 1 ? currentPath[1] : null; 
+    return currentPath[1] !== 'index' && length > 1 ? currentPath[1] : null;
   }),
 });
