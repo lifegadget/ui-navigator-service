@@ -28,4 +28,7 @@ export default Ember.Service.extend({
     const length = currentPath.length;
     return currentPath[1] !== 'index' && length > 1 ? currentPath[1] : null;
   }),
+  routeParts: computed('currentPath', function() {
+    return this.get('currentPath').split('.').filter(p => p !== 'index');
+  })
 });

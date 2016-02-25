@@ -20,7 +20,15 @@ ember install ui-navigator-service
 
 ## Usage
 
-By default this add-on will now inject itself into all Routes, Views, and Components as `navigator`. If you wish to override this behavior you can configure this in your `config/environment.js` file. If, for instance, you wanted to have _only_ Components get the service injected automatically, you would add the following:
+By default this add-on will not inject itself automatically but you can do it where you need it by:
+
+````javascript
+export default Ember.Route.extend({
+  navigator: Ember.service.inject(),
+  // ...
+});
+
+If however, you would like it to be auto-injected into certain objects you _can_ specify that in your `config/environment.js` file. If, for instance, you wanted to have _all_ Components get the service injected automatically, you would add the following:
 
 ````javascript
 module.exports = function(environment) {
@@ -31,14 +39,3 @@ module.exports = function(environment) {
   }
 }
 ````
-
-But that doesn't prevent you from adding the service on an ad-hoc basis to other factories. Here's how you might add to a particular route where you wanted the service available:
-
-````javascript
-export default Ember.Route.extend({
-  navigator: Ember.service.inject(),
-  // ...
-});
-````
-
-> **Note:** the reason that _controllers_ were not included as a default injection was that you would have the service injected into the `application` controller which would create a race condition.
