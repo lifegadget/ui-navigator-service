@@ -24,7 +24,7 @@ By default this add-on will not inject itself automatically but you can do it wh
 
 ````javascript
 export default Ember.Route.extend({
-  navigator: Ember.service.inject(),
+  navigator: Ember.inject.service(),
   // ...
 });
 
