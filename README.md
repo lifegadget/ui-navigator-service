@@ -14,23 +14,24 @@ Check out the demo app to see it in action: [demo app](https://ui-navigator-serv
 
 Assumes Ember CLI > 0.2.3
 
-````bash
+```bash
 ember install ui-navigator-service
-````
+```
 
 ## Usage
 
 By default this add-on will not inject itself automatically but you can do it where you need it by:
 
-````javascript
+```javascript
 export default Ember.Route.extend({
-  navigator: Ember.service.inject(),
+  navigator: Ember.inject.service(),
   // ...
 });
+```
 
 If however, you would like it to be auto-injected into certain objects you _can_ specify that in your `config/environment.js` file. If, for instance, you wanted to have _all_ Components get the service injected automatically, you would add the following:
 
-````javascript
+```javascript
 module.exports = function(environment) {
   var ENV = {
     uiNavigator: {
@@ -38,4 +39,4 @@ module.exports = function(environment) {
     }
   }
 }
-````
+```
