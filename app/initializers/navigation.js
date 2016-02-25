@@ -2,14 +2,17 @@ import config from '../config/environment';
 
 export function initialize(/* application */) {
   const application = arguments[1] || arguments[0];
-  const { uiNavigator } = config;
+  let { uiNavigator } = config;
+  uiNavigator = uiNavigator || {};
   const { injectionFactories } = uiNavigator || [];
   application.register('config:navigator', uiNavigator, { instantiate: false });
-  application.inject('service:navigator', 'uiNavigator', 'config:navigator');
+  if(injectionFactories.length > 0) {
+    application.inject('service:navigator', 'uiNavigator', 'config:navigator');
 
-  injectionFactories.forEach((factory) => {
-    application.inject(factory, 'navigator', 'service:navigator');
-  });
+    injectionFactories.forEach((factory) => {
+      application.inject(factory, 'navigator', 'service:navigator');
+    });
+  }
 }
 
 export default {
