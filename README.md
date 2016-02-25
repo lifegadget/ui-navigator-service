@@ -22,7 +22,7 @@ ember install ui-navigator-service
 
 By default this add-on will not inject itself automatically but you can do it where you need it by:
 
-````javascript
+```javascript
 export default Ember.Route.extend({
   navigator: Ember.inject.service(),
   // ...
@@ -38,4 +38,4 @@ module.exports = function(environment) {
     }
   }
 }
-````
+```
