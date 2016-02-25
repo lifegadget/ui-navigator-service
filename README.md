@@ -10,6 +10,8 @@
 
 Check out the demo app to see it in action: [demo app](https://ui-navigator-service.firebaseapp.com)
 
+You can also watch [a free EmberScreencast](https://www.emberscreencasts.com/posts/94-finding-current-route-and-creating-breadcrumbs-with-ui-navigator-service) that shows how to setup the addon and use it to create breadcrumbs.
+
 ## Installation
 
 Assumes Ember CLI > 0.2.3
