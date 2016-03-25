@@ -3,9 +3,6 @@ import getOwner from 'ember-getowner-polyfill';
 const { computed, observer, $, run, on, typeOf } = Ember;  // jshint ignore:line
 const { get, set } = Ember; // jshint ignore:line
 const a = Ember.A; // jshint ignore:line
-const snake = thingy => {
-  return thingy ? thingy.split('.').join('_') : thingy;
-};
 export default Ember.Service.extend({
   init(...args) {
     this._super(args);
