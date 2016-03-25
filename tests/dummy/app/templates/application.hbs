@@ -12,13 +12,32 @@
   <li>{{#link-to 'foo.bar.baz'}}foo.bar.baz{{/link-to}}</li>
   <li>{{#link-to 'foo.new'}}foo.new{{/link-to}}</li>
 </ul>
+Routes with Dynamic Segments
+<ul>
+  <li>{{#link-to 'animals.animal' 'monkey'}}animals/monkey (route is animals.animal){{/link-to}}</li>
+  <li>{{#link-to 'animals.animal.size' 'monkey' 'big'}}animals/monkey/big (route is animals.animal){{/link-to}}</li>
+  <li>{{#link-to 'animals.animal' 'bunny'}}animals/bunny (route is animals.animal){{/link-to}}</li>
+  <li>{{#link-to 'animals.animal.size' 'bunny' 'small'}}animals/bunny/small (route is animals.animal){{/link-to}}</li>
+</ul>
 
 <h3>Navigator says:</h3>
 <ul>
   <li>currentPath: <span class="answer">{{navigator.currentPath}}</span></li>
   <li>currentRouteName: <span class="answer">{{navigator.currentRouteName}}</span></li>
+  <li>
+    signature: <span class='answer'>{{navigator.signature}}</span>
+  </li>
 </ul>
-
+<p>
+  <note>
+    <p>
+      Navigating between two URI's which share a common route (but have different dynamic sequences) does not trigger a change in <i>signature</i> and <i>routeContexts</i>. Would love to fix this but not sure how to create dynamic observers for the various routes 'context' property. Happy to accept a PR for this.
+    </p>
+    <p>
+      As a less than ideal work-around for now you can call <code>refresh()</code> on the service and these properties will be updated.
+    </p>
+  </note>
+</p>
 <ul>
   <li>
     currentNode: <span class='answer'>{{navigator.currentNode}}</span>
@@ -35,7 +54,14 @@
   <li>
     routeParts: <span class='answer'>{{json navigator.routeParts}}</span>
   </li>
+  <li>
+    routeContexts: <span class='answer'>{{json navigator.routeContexts}}</span>
+  </li>
 </ul>
+
+<p>
+  <br>
+</p>
 
 {{outlet}}
 

@@ -12,6 +12,11 @@ Router.map(function() {
       this.route('baz');
     });
   });
+  this.route('animals', function() {
+    this.route('animal', { path: ':id' }, function() {
+      this.route('size', { path: ':size' });
+    });
+  });
 });
 
 export default Router;
