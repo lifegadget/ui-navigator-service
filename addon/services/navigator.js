@@ -3,6 +3,7 @@ import getOwner from 'ember-getowner-polyfill';
 const { computed, observer, $, run, on, typeOf } = Ember;  // jshint ignore:line
 const { get, set } = Ember; // jshint ignore:line
 const a = Ember.A; // jshint ignore:line
+
 export default Ember.Service.extend({
   init(...args) {
     this._super(args);
@@ -11,7 +12,6 @@ export default Ember.Service.extend({
   },
   currentPath: computed.alias('applicationController.currentPath'),
   currentRouteName: computed.alias('applicationController.currentRouteName'),
-  dynamicSegment: computed.alias('dRoute.context'),
   currentNode: computed('currentPath', function() {
     let chain = this.get('currentPath').split('.');
     let leaf = chain.pop();
@@ -61,7 +61,7 @@ export default Ember.Service.extend({
   }),
 
   /**
-   * Asks a trigger mechanism for when a route's "context" changes but not the route itself
+   * A trigger mechanism for when a route's "dynamic segments" change but not the route itself
    */
   _contextMutex: false,
   refresh() {
