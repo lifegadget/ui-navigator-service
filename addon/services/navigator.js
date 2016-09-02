@@ -1,8 +1,6 @@
 import Ember from 'ember';
 import getOwner from 'ember-getowner-polyfill';
-const { computed, observer, $, run, on, typeOf } = Ember;  // jshint ignore:line
-const { get, set } = Ember; // jshint ignore:line
-const a = Ember.A; // jshint ignore:line
+const { computed, get } = Ember;  
 
 export default Ember.Service.extend({
   init(...args) {
@@ -59,6 +57,10 @@ export default Ember.Service.extend({
       }
     }).join('.');
   }),
+
+  transitionToRoute(name, models, options) {
+    return this.get('applicationController').transitionToRoute(name, models, options);
+  },
 
   /**
    * A trigger mechanism for when a route's "dynamic segments" change but not the route itself
