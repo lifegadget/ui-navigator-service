@@ -1,12 +1,11 @@
 import Ember from 'ember';
 import getOwner from 'ember-getowner-polyfill';
-const { computed, get } = Ember;  
+const { computed, get } = Ember;
 
 const navigator = Ember.Service.extend({
   init(...args) {
     this._super(args);
     this.set('applicationController', getOwner(this).lookup('controller:application'));
-    this.set('dRoute', getOwner(this).lookup(`route:animals.animal.size`));
   },
   currentPath: computed.alias('applicationController.currentPath'),
   currentRouteName: computed.alias('applicationController.currentRouteName'),
@@ -32,13 +31,11 @@ const navigator = Ember.Service.extend({
   }),
   routeContexts: computed('currentPath', '_contextMutex', function() {
     const parts = this.get('routeParts');
-    // this._removeListeners();
     return parts.map((p, i) => {
       const dottedNotation = parts.slice(0, i+1).join('.');
       const route = getOwner(this).lookup(`route:${dottedNotation}`);
       let context;
       if(route && get(route, 'context')) {
-        // this._addListener(dottedNotation);
         context = get(route, 'context');
       } else {
         context = {};
@@ -70,29 +67,6 @@ const navigator = Ember.Service.extend({
     this.toggleProperty('_contextMutex');
   },
   _listeners: computed(() => {return new Ember.Object();} ),
-  // _addListener(path) {
-  //   console.log('path: ', path);
-  //   const route = getOwner(this).lookup(`route:${path}`);
-  //   const context = get(route, 'context');
-  //   const param = Object.keys(context)[0];
-  //   const listeners = this.get('_listeners');
-  //   listeners[snake(path)] = route;
-  //
-  //   console.log('listeners: ', snake(path), listeners);
-  //   this.addObserver(`_listeners.${snake(path)}.context.${param}`, this._mutateContext);
-  // },
-  // _removeListeners() {
-  //   Object.keys(this._listeners).map(path => {
-  //     const context = getOwner(this).lookup(`route:${path}.context`);
-  //     // this.removeObserver(context, this, this._listeners[path]);
-  //   });
-  // },
-  // _mutateContext() {
-  //   console.log('mutating context');
-  //   // const mutexValue = Object.keys(this._listeners).map(k=>`${k}::${this._listeners[k]}`).join(',');
-  //   // this.set('_contextMutex', mutexValue);
-  //   this.toggleProperty('_contextMutex');
-  // }
 
 });
 
