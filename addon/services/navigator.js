@@ -2,7 +2,7 @@ import Ember from 'ember';
 import getOwner from 'ember-getowner-polyfill';
 const { computed, get } = Ember;
 
-const navigator = Ember.Service.extend({
+const navigatorService = Ember.Service.extend({
   init(...args) {
     this._super(args);
     this.set('applicationController', getOwner(this).lookup('controller:application'));
@@ -70,6 +70,6 @@ const navigator = Ember.Service.extend({
 
 });
 
-navigator[Ember.NAME_KEY] = 'ui-navigator';
-export default navigator;
+navigatorService[Ember.NAME_KEY] = 'ui-navigator';
+export default navigatorService;
 
