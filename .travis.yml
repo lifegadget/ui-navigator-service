@@ -1,9 +1,17 @@
 ---
 language: node_js
 node_js:
-  - "0.12"
+  - "4"
 
-sudo: false
+sudo: true
+dist: trusty
+
+addons:
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
 
 cache:
   directories:
@@ -12,6 +20,8 @@ cache:
 env:
   - EMBER_TRY_SCENARIO=default
   - EMBER_TRY_SCENARIO=ember-release
+  - EMBER_TRY_SCENARIO=ember-1.13.13
+  - EMBER_TRY_SCENARIO=ember-2.8.0
   - EMBER_TRY_SCENARIO=ember-beta
   - EMBER_TRY_SCENARIO=ember-canary
 
@@ -19,11 +29,14 @@ matrix:
   fast_finish: true
   allow_failures:
     - env: EMBER_TRY_SCENARIO=ember-canary
+    - env: EMBER_TRY_SCENARIO=ember-1.13.13
 
 before_install:
-  - export PATH=/usr/local/phantomjs-2.0.0/bin:$PATH
-  - "npm config set spin false"
-  - "npm install -g npm@^2"
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 2 # give xvfb some time to start
+  - "npm config set progress false"
+  - "npm install -g npm@^3"
 
 install:
   - npm install -g bower
@@ -32,3 +45,6 @@ install:
 
 script:
   - ember try $EMBER_TRY_SCENARIO test
+
+notifications:
+  slack: lifegadget:mtokkpY5lTA2adgCqWtgCGln
