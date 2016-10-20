@@ -4,7 +4,7 @@ export function initialize(/* application */) {
   const application = arguments[1] || arguments[0];
   let { uiNavigator } = config;
   uiNavigator = uiNavigator || {};
-  const { injectionFactories } = uiNavigator || [];
+  const injectionFactories = uiNavigator.injectionFactories || [];
   application.register('config:navigator', uiNavigator, { instantiate: false });
   if(injectionFactories.length > 0) {
     application.inject('service:navigator', 'uiNavigator', 'config:navigator');
