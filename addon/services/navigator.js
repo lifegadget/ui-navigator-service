@@ -15,7 +15,7 @@ const navigatorService = Ember.Service.extend({
     return leaf === 'index' ? chain.pop() : leaf;
   }),
   isIndexRoute: computed('currentPath', function() {
-    const currentPath = this.get('currentPath') || [];
+    const currentPath = this.get('currentPath') || '';
     return currentPath.split('.').pop() === 'index';
   }),
   primaryRoute: computed('currentPath', function() {
@@ -28,7 +28,7 @@ const navigatorService = Ember.Service.extend({
     return currentPath[1] !== 'index' && length > 1 ? currentPath[1] : null;
   }),
   routeParts: computed('currentPath', function() {
-    return (this.get('currentPath') || []).split('.').filter(p => p !== 'index');
+    return this.get('currentPath').split('.').filter(p => p !== 'index');
   }),
   routeContexts: computed('currentPath', '_contextMutex', function() {
     const parts = this.get('routeParts');
